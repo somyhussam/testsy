@@ -1,27 +1,16 @@
-import telethon
-import os
-import asyncio
-from telethon.tl import functions, types
-from telethon.tl.functions.messages import ImportChatInviteRequest as Get
-from telethon.utils import get_display_name
-from telethon.errors import FloodWaitError
-from telethon import TelegramClient, events
-from collections import deque
-from telethon import functions
-from telethon.errors.rpcerrorlist import (
-    UserAlreadyParticipantError,
-    UserNotMutualContactError,
-    UserPrivacyRestrictedError,
-)
-from telethon.tl.functions.channels import InviteToChannelRequest
-from telethon.tl.types import InputPeerUser
 from telethon.errors.rpcerrorlist import YouBlockedUserError
+from telethon.tl import functions
 from hijri_converter import Gregorian
 from telethon.tl import functions
 from telethon.tl.functions.channels import LeaveChannelRequest
+from collections import deque
 from telethon import events
+from telethon.errors import FloodWaitError
 from telethon.tl.functions.channels import JoinChannelRequest
+from telethon.tl.functions.messages import ImportChatInviteRequest as Get
+from telethon.tl import functions
 import time
+import asyncio
 import logging
 import base64
 import datetime
@@ -29,16 +18,11 @@ from payment import *
 from help import *
 from config import *
 from checktele import *
-from telethon.tl.functions.messages import GetHistoryRequest
-import requests
-
 
 # -
-saython = ['yes']
+
 sython.start()
-c = requests.session()
-bot_username = '@t06bot'
-bot_usernamee = '@A_MAN9300BOT'
+
 y = datetime.datetime.now().year
 m = datetime.datetime.now().month
 dayy = datetime.datetime.now().day
@@ -64,90 +48,6 @@ async def join_channel():
         await sython(JoinChannelRequest("@saythonh"))
     except BaseException:
         pass
-
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.تجميع المليار"))
-async def _(event):
-        await event.edit("حسنا, تأكد من انك مشترك ب قنوات الاشتراك الاجباري لتجنب الأخطأء")
-        channel_entity = await sython.get_entity(bot_username)
-        await sython.send_message('@t06bot', 'جاري التجميع بواسطة | SOMY TEAM')
-        channel_entity = await sython.get_entity(bot_username)
-        await sython.send_message('@t06bot', '/start')
-        await asyncio.sleep(10)
-        msg0 = await sython.get_messages('@t06bot', limit=1)
-        await msg0[0].click(2)
-        await asyncio.sleep(10)
-        msg1 = await sython.get_messages('@t06bot', limit=1)
-        await msg1[0].click(0)
-
-        chs = 1
-        for i in range(100):
-
-            await asyncio.sleep(10)
-
-            list = await sython(GetHistoryRequest(peer=channel_entity, limit=1,
-                                                   offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
-            msgs = list.messages[0]
-            if msgs.message.find('لا يوجد قنوات في الوقت الحالي , قم يتجميع النقاط بطريقه مختلفه') != -1:
-                await sython.send_message(event.chat_id, f"لايوجد قنوات  في البوت | SY")
-                break
-            url = msgs.reply_markup.rows[0].buttons[0].url
-            try:
-                try:
-                    await sython(JoinChannelRequest(url))
-                except:
-                    bott = url.split('/')[-1]
-                    await sython(ImportChatInviteRequest(bott))
-                msg2 = await sython.get_messages('@t06bot', limit=1)
-                await msg2[0].click(text='تحقق')
-                chs += 1
-                await sython.send_message(event.chat_id, f"تم الاشتراك في {chs} قناة")
-            except:
-                await sython.send_message(event.chat_id, f"خطأ من المحتمل تم حظر الانضمام ")
-                break
-        await sython.send_message(event.chat_id, "تم الانتهاء من التجميع !")
-
-
-
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.تجميع الجوكر"))
-async def _(event):
-        await event.edit("حسنا, تأكد من انك مشترك ب قنوات الاشتراك الاجباري لتجنب الأخطأء")
-        channel_entity = await sython.get_entity(bot_usernamee)
-        await sython.send_message('@A_MAN9300BOT', 'جاري التجميع بواسطة | SOMY TEAM')
-        channel_entity = await sython.get_entity(bot_usernamee)
-        await sython.send_message('@A_MAN9300BOT', '/start')
-        await asyncio.sleep(10)
-        msg0 = await sython.get_messages('@A_MAN9300BOT', limit=1)
-        await msg0[0].click(2)
-        await asyncio.sleep(10)
-        msg1 = await sython.get_messages('@A_MAN9300BOT', limit=1)
-        await msg1[0].click(0)
-
-        chs = 1
-        for i in range(100):
-
-            await asyncio.sleep(10)
-
-            list = await sython(GetHistoryRequest(peer=channel_entity, limit=1,
-                                                   offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
-            msgs = list.messages[0]
-            if msgs.message.find('لا يوجد قنوات في الوقت الحالي , قم يتجميع النقاط بطريقه مختلفه') != -1:
-                await sython.send_message(event.chat_id, f"لايوجد قنوات  في البوت | SY")
-                break
-            url = msgs.reply_markup.rows[0].buttons[0].url
-            try:
-                try:
-                    await sython(JoinChannelRequest(url))
-                except:
-                    bott = url.split('/')[-1]
-                    await sython(ImportChatInviteRequest(bott))
-                msg2 = await sython.get_messages('@t06bot', limit=1)
-                await msg2[0].click(text='تحقق')
-                chs += 1
-                await sython.send_message(event.chat_id, f"تم الاشتراك في {chs} قناة")
-            except:
-                await sython.send_message(event.chat_id, f"خطأ من المحتمل تم حظر الانضمام ")
-                break
-        await sython.send_message(event.chat_id, "تم الانتهاء من التجميع !")
 
 
 
@@ -201,18 +101,9 @@ ownerhson_id = 5159123009
 async def OwnerStart(event):
     sender = await event.get_sender()
     if sender.id == ownerhson_id :
-        order = await event.reply('Hi Hussam')
+        order = await event.reply('مرحبا ايها المطور')
 
 
-@sython.on(events.NewMessage(outgoing=True, pattern=".مؤقت (.*)"))
-async def spammer(event):
-    reply = await event.get_reply_message()
-    input_str = "".join(event.text.split(maxsplit=1)[1:]).split(" ", 2)
-    sleeptimet = sleeptimem = float(input_str[0])
-    cat = input_str[1:]
-    await event.delete()
-    await spam_function(event, reply, cat, sleeptimem, sleeptimet, DelaySpam=True)
-  
 
 
 print("- sython Userbot Running ..")
