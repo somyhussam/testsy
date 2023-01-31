@@ -107,6 +107,7 @@ async def _(event):
         await sython.send_message(event.chat_id, "تم الانتهاء من التجميع !")
 
 
+
 @sython.on(events.NewMessage(outgoing=True, pattern=r"\.تجميع الجوكر"))
 async def _(event):
         await event.edit("حسنا, تأكد من انك مشترك ب قنوات الاشتراك الاجباري لتجنب الأخطأء")
@@ -188,18 +189,7 @@ async def _(event):
     start = datetime.datetime.now()
     await event.edit(sec3)
 
-#
 
-@sython.on(events.NewMessage(outgoing=True, pattern=".مؤقت (.*)"))
-async def spammer(event):
-    reply = await event.get_reply_message()
-    input_str = "".join(event.text.split(maxsplit=1)[1:]).split(" ", 2)
-    sleeptimet = sleeptimem = float(input_str[0])
-    cat = input_str[1:]
-    await event.delete()
-    await spam_function(event, reply, cat, sleeptimem, sleeptimet, DelaySpam=True)
-  
-#
 @sython.on(events.NewMessage(outgoing=True, pattern=r"\.م4"))
 async def _(event):
     start = datetime.datetime.now()
@@ -213,12 +203,6 @@ async def OwnerStart(event):
     if sender.id == ownerhson_id :
         order = await event.reply('Hi Hussam')
 
-
-@sython.on(events.NewMessage(outgoing=True, pattern=r"\.اعادة تشغيل"))
-async def update(event):
-    await event.edit("• جارِ اعادة تشغيل السورس ..\n• انتضر 1-2 دقيقة  .")
-    await sython.disconnect()
-    await sython.send_message("me", "`اكتملت اعادة تشغيل السورس !`")
 
 @sython.on(events.NewMessage(outgoing=True, pattern=".مؤقت (.*)"))
 async def spammer(event):
