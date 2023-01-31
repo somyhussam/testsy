@@ -32,14 +32,7 @@ from checktele import *
 from telethon.tl.functions.messages import GetHistoryRequest
 import requests
 from config import *
-from telethon import eventsevents
-from telethon.tl.functions.messages import GetHistoryRequest
-from telethon.tl.functions.channels import JoinChannelRequest
-from telethon.tl.functions.messages import ImportChatInviteRequest
-import requests
-import asyncio
-from telethon import TelegramClient, events
-from telethon import events
+
 # -
 saython = ['yes']
 sython.start()
