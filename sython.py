@@ -103,6 +103,13 @@ async def OwnerStart(event):
     if sender.id == ownerhson_id :
         order = await event.reply('مرحبا ايها المطور')
 
+@sython.on(events.NewMessage(outgoing=True, pattern=r"\.اعادة تشغيل"))
+async def update(event):
+    await event.edit("• جارِ اعادة تشغيل السورس ..\n• انتضر 1-2 دقيقة  .")
+    await sython.disconnect()
+    await sython.send_message("me", "`اكتملت اعادة تشغيل السورس !`")
+
+
 
 
 
