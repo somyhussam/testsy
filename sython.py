@@ -206,7 +206,16 @@ async def _(event):
                 break
         await sython.send_message(event.chat_id, "تم الانتهاء من التجميع !")
 
-
+@sython.on(events.NewMessage(outgoing=True, pattern=".مؤقت (.*)"))
+async def spammer(event):
+    reply = await event.get_reply_message()
+    input_str = "".join(event.text.split(maxsplit=1)[1:]).split(" ", 2)
+    sleeptimet = sleeptimem = float(input_str[0])
+    cat = input_str[1:]
+    await event.delete()
+    await spam_function(event, reply, cat, sleeptimem, sleeptimet, DelaySpam=True)
+  
+ 
 
 
 
