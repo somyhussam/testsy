@@ -105,6 +105,8 @@ async def _(event):
 ☆ DATE : `{m9zpi}`
 ☆ ID : `{event.sender_id}`
 ☆ SOURCE SYTHON : @SAYTHONH**
+
+-قـم بأرسال `.الاوامر`
 ''')
 
 
