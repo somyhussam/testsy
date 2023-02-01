@@ -18,10 +18,21 @@ from payment import *
 from help import *
 from config import *
 from checktele import *
+from telethon.tl.functions.messages import GetHistoryRequest
+from telethon.tl.functions.channels import JoinChannelRequest
+from telethon.tl.functions.messages import ImportChatInviteRequest
+import requests
+from config import *
+import asyncio
+from telethon import events
+
 
 # -
 
 sython.start()
+c = requests.session()
+bot_username = '@t06bot'
+bot_usernamee = '@A_MAN9300BOT'
 
 y = datetime.datetime.now().year
 m = datetime.datetime.now().month
