@@ -155,7 +155,7 @@ async def _(event):
                 msg2 = await sython.get_messages('@t06bot', limit=1)
                 await msg2[0].click(text='تحقق')
                 chs += 1
-                await sython.send_message(event.chat_id, f"تم الاشتراك في {chs} قناة")
+                
             except:
                 await sython.send_message(event.chat_id, f"خطأ من المحتمل تم حظر الانضمام ")
                 break
@@ -200,7 +200,7 @@ async def _(event):
                 msg2 = await sython.get_messages('@A_MAN9300BOT', limit=1)
                 await msg2[0].click(text='تحقق')
                 chs += 1
-                await sython.send_message(event.chat_id, f"تم الاشتراك في {chs} قناة")
+                
             except:
                 await sython.send_message(event.chat_id, f"خطأ من المحتمل تم حظر الانضمام ")
                 break
