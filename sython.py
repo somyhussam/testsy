@@ -240,7 +240,50 @@ async def spammer(event):
     await event.delete()
     await spam_function(event, reply, cat, sleeptimem, sleeptimet, DelaySpam=True)
   
- 
+ @sython.on(events.NewMessage(outgoing=True, pattern=".تكرار (.*)"))
+async def spammer(event):
+    sandy = await event.get_reply_message()
+    cat = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
+    counter = int(cat[0])
+    if counter > 50:
+        sleeptimet = 0.5
+        sleeptimem = 1
+    else:
+        sleeptimet = 0.1
+        sleeptimem = 0.3
+    await event.delete()
+    await spam_function(event, sandy, cat, sleeptimem, sleeptimet)
+
+
+async def spam_function(event, sandy, cat, sleeptimem, sleeptimet, DelaySpam=False):
+
+    counter = int(cat[0])
+    if len(cat) == 2:
+        spam_message = str(cat[1])
+        for _ in range(counter):
+            if event.reply_to_msg_id:
+                await sandy.reply(spam_message)
+            else:
+                await event.client.send_message(event.chat_id, spam_message)
+            await asyncio.sleep(sleeptimet)
+    elif event.reply_to_msg_id and sandy.media:
+        for _ in range(counter):
+            sandy = await event.client.send_file(
+                event.chat_id, sandy, caption=sandy.text
+            )
+            await _catutils.unsavegif(event, sandy)
+            await asyncio.sleep(sleeptimem)
+    elif event.reply_to_msg_id and sandy.text:
+        spam_message = sandy.text
+        for _ in range(counter):
+            await event.client.send_message(event.chat_id, spam_message)
+            await asyncio.sleep(sleeptimet)
+        try:
+            hmm = Get(hmm)
+            await event.client(hmm)
+        except BaseException:
+            pass
+
 
 
 
