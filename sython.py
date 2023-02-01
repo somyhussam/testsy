@@ -458,7 +458,7 @@ async def spammer(event):
   
  
     
-@sython.on(events.NewMessage(outgoing=True, pattern=".فحص"))
+@sython.on(events.NewMessage(outgoing=True, pattern=".سورس"))
 async def _(event):
       await event.reply("""السـورس يعمـل | 𝐒𝐘𝐓𝐇𝐎𝐍
 ╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍
@@ -591,7 +591,7 @@ async def _(event):
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 32])
 
-@sython.on(events.NewMessage(outgoing=True, pattern=".الاوامر"))
+@sython.on(events.NewMessage(outgoing=True, pattern=".م4"))
 async def _(event):
       await event.edit("""اوامر السورس | 𝐒𝐘𝐓𝐇𝐎𝐍
 
@@ -640,10 +640,6 @@ async def _(event):
 `مثال | .احسب 7 - 7  `
 `مثال | .احسب 7 ÷ 7 `
 
-8️⃣ الامر تجميع نقاط بوت المليار 
-الوظيفة : يستخدم لتجميع نقاط بوت تمويل المليار تلقائيا 
-
-طريقة التشغيل : `.تجميع المليار`
 
 ╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍
 
